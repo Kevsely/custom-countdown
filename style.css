@@ -18,7 +18,7 @@ body {
   position: fixed;
   right: 0;
   bottom: 0;
-
+  width: 100vw;
 }
 
 video {
@@ -127,7 +127,10 @@ li span {
 /* Media Query: Large Smartphone (Vertical) */
 @media screen and (max-width: 600px) {
   .video-background {
-
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    object-position: 70%;
   }
   
   video {
