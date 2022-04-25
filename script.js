@@ -57,5 +57,18 @@ function updateCountdown(e) {
     updateDOM()
 }
 
+// Reset the countdown and back the the main div
+function reset() {
+    //Switch the the appropriate menu
+    countdownEl.hidden = true
+    inputContainer.hidden = false 
+    //Stop counting down
+    clearInterval(countdownActive)
+    //Reset the used variables. 
+    countdownTitle = ""
+    countdownDate = ""
+}
+
 // Event Listeners
 countdownForm.addEventListener("submit", updateCountdown)
+countdonwBtn.addEventListener("click", reset)
