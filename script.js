@@ -7,6 +7,10 @@ const countdownElTitle = document.getElementById("countdown-title")
 const countdonwBtn = document.getElementById("countdown-button")
 const timeElements = document.querySelectorAll("span")
 
+const completeEl = document.getElementById("complete")
+const completeElInfo = document.getElementById("complete-info")
+const completeBtn = document.getElementById("complete-button") 
+
 let countdownTitle = ""
 let countdownDate = ""
 let countdonwValue = Date
@@ -32,17 +36,27 @@ function updateDOM() {
         const minutes = Math.floor((distance % hour) / minute)
         const seconds = Math.floor((distance % minute) / second)
 
-        //Populate countdown 
-        countdownElTitle.textContent = `${countdownTitle}`
-        timeElements[0].textContent = `${days}`
-        timeElements[1].textContent = `${hours}`
-        timeElements[2].textContent = `${minutes}`
-        timeElements[3].textContent = `${seconds}`
-
         //Hide Input
         inputContainer.hidden = true
-        //Show Countdown 
-        countdownEl.hidden = false
+
+        if (distance < 0) {
+            //Stop the countdown and display a finished message
+            countdownEl.hidden = true
+            clearInterval(countdownActive)
+            completeElInfo.textContent = `${countdownTitle} finished on ${countdownDate}`
+            completeEl.hidden = false;
+        } else {
+            //Keep the counddonw running
+
+            countdownElTitle.textContent = `${countdownTitle}`
+            timeElements[0].textContent = `${days}`
+            timeElements[1].textContent = `${hours}`
+            timeElements[2].textContent = `${minutes}`
+            timeElements[3].textContent = `${seconds}`
+            
+            completeEl.hidden = true
+            countdownEl.hidden = false
+        }
     }, second)
 }
 
