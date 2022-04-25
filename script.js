@@ -81,6 +81,7 @@ function updateCountdown(e) {
 function reset() {
     //Switch the the appropriate menu
     countdownEl.hidden = true
+    completeEl.hidden = true
     inputContainer.hidden = false 
     //Stop counting down
     clearInterval(countdownActive)
@@ -92,3 +93,4 @@ function reset() {
 // Event Listeners
 countdownForm.addEventListener("submit", updateCountdown)
 countdonwBtn.addEventListener("click", reset)
+completeBtn.addEventListener("click", reset)
