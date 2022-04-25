@@ -25,7 +25,7 @@ dateEl.setAttribute("min", today)
 function updateDOM() {
     countdownActive =  setInterval(() => {
         const now = new Date().getTime()
-        const distance = countdonwValue - now 
+        const distance = countdonwValue - now
 
         const days = Math.floor(distance / day)
         const hours = Math.floor((distance % day) / hour)
@@ -51,10 +51,16 @@ function updateCountdown(e) {
     e.preventDefault()
     countdownTitle = e.srcElement[0].value
     countdownDate = e.srcElement[1].value
-    console.log(countdownTitle, countdownDate)
-    // Get number version of current Date, update DOM
-    countdonwValue = new Date(countdownDate).getTime()
-    updateDOM()
+    // Check for valid date
+    if (countdownDate === "") 
+    {
+        alert("Please select a date for the countdown")
+    }
+    else {
+        // Get number version of current Date, update DOM
+        countdonwValue = new Date(countdownDate).getTime()
+        updateDOM()
+    }
 }
 
 // Reset the countdown and back the the main div
